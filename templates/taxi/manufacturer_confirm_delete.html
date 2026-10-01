@@ -6,6 +6,7 @@
   <form action="" method="post">
     {% csrf_token %}
     <input type="submit" value="Yes, delete" class="btn btn-danger">
-    <a href="{% url "taxi:manufacturer-list" %}" class="btn btn-secondary">Cancel</a>
+    {% url 'taxi:manufacturer-list' as manufacturer_list_url %}
+    <a href="{{ request.META.HTTP_REFERER|default:manufacturer_list_url }}" class="btn btn-secondary">Cancel</a>
   </form>
 {% endblock %}
